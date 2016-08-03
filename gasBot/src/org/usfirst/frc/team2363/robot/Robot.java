@@ -6,9 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team2363.robot.commands.AutoStart;
 import org.usfirst.frc.team2363.robot.commands.RunRelayCommand;
 import org.usfirst.frc.team2363.robot.commands.ThrottleCommand;
 import org.usfirst.frc.team2363.robot.subsystems.RunRelay;
+import org.usfirst.frc.team2363.robot.subsystems.StarterRelay;
 import org.usfirst.frc.team2363.robot.subsystems.ThrottleServo;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -26,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static ThrottleServo throttleServo;
 	public static RunRelay runRelay;
+	public static StarterRelay starterRelay;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -38,10 +41,11 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		throttleServo = new ThrottleServo();
 		runRelay = new RunRelay();
+		starterRelay = new StarterRelay();
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new ThrottleCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+//        SmartDashboard.putData("Auto mode", chooser);
     }
 	
 	/**
@@ -110,7 +114,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Run State", runRelay.isOn());
         SmartDashboard.putData("Run Engine", new RunRelayCommand(true));
         SmartDashboard.putData("KILL ENGINE", new RunRelayCommand(false));
-//        SmartDashboard.putNumber("Servo Position", newServo.getServo());
+        SmartDashboard.putBoolean("Starting?", starterRelay.isStarting());
+        SmartDashboard.putData("Auto-Start", new AutoStart());
     }
     
     /**

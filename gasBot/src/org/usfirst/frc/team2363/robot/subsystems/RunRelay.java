@@ -7,14 +7,14 @@ import static org.usfirst.frc.team2363.robot.RobotMap.*;
 import org.usfirst.frc.team2363.robot.commands.RunRelayCommand;
 
 /**
- *
+ *This is the subsystem for the run permissive relay on the gas powered robot. This relay allows the gas engine to run or not run.
  */
 public class RunRelay extends Subsystem {
     
     private Relay relay = new Relay(RUN_RELAY);
 
     /**
-     * run engine/ prep engine for ignition
+     * runs engine/ preps engine for ignition
      */
     public void on(){
     	relay.set(Relay.Value.kOn);
