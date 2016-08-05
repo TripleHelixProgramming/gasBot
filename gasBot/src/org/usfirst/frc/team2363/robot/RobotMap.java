@@ -41,4 +41,6 @@ public class RobotMap {
 	public static final int RUN_RELAY = 0; //kill switch
 	public static final int STARTER_RELAY = 1; //remote start
 	public static final int PERFORMANCE_RELAY = 2; //switch between race/economical modes
+	
+	public static final int STEERING_CAN = 10;
 }

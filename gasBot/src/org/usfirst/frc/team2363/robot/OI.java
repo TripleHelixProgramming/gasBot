@@ -24,6 +24,10 @@ public class OI {
 	public double getThrottle() {
 		return ((ps4.getRawAxis(RIGHT_TRIGGER) * 0.545) + 0.061);
 	}
+	
+	public double getSteering() {
+		return ps4.getRawAxis(LEFT_STICK_X);
+	}
 
 	//// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.

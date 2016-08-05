@@ -16,7 +16,7 @@ public class StarterRelay extends Subsystem {
     /**
      * Run this method to run an automated remote start of the gas engine on the gas powered robot. This runs the starter for 3 seconds.
      */
-    public void autoOn() {
+/*    public void autoOn() {
     	on();
     	try {
 			wait(3000);
@@ -25,28 +25,28 @@ public class StarterRelay extends Subsystem {
 			e.printStackTrace();
 		}
     	off();
-    }
+    }*/
     
     /**
      * Closes the starter relay.
      */
     public void on() {
-    	relay.set(Relay.Value.kOn);
+    	relay.set(Relay.Value.kForward);
     }
     
     /**
      * Opens the starter relay.
      */
     public void off() {
-    	relay.set(Relay.Value.kOff);
+    	relay.set(Relay.Value.kReverse);
     }
     
     public boolean isStarting() {
-    	return relay.get() == Relay.Value.kOn;
+    	return relay.get() == Relay.Value.kForward;
     }
     
     public void initDefaultCommand() {
-        setDefaultCommand(new AutoStart());
+//        setDefaultCommand(new AutoStart());
     }
 }
 

@@ -17,18 +17,18 @@ public class RunRelay extends Subsystem {
      * runs engine/ preps engine for ignition
      */
     public void on(){
-    	relay.set(Relay.Value.kOn);
+    	relay.set(Relay.Value.kForward);
     }
     
     /**
      * kill engine
      */
     public void kill(){
-    	relay.set(Relay.Value.kOff);
+    	relay.set(Relay.Value.kReverse);
     }
     
     public boolean isOn() {
-    	return relay.get() == Relay.Value.kOn; //Mainly for SmartDash
+    	return relay.get() == Relay.Value.kForward; //Mainly for SmartDash
     }
     
     public void initDefaultCommand() {

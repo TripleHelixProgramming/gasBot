@@ -11,6 +11,7 @@ import org.usfirst.frc.team2363.robot.commands.RunRelayCommand;
 import org.usfirst.frc.team2363.robot.commands.ThrottleCommand;
 import org.usfirst.frc.team2363.robot.subsystems.RunRelay;
 import org.usfirst.frc.team2363.robot.subsystems.StarterRelay;
+import org.usfirst.frc.team2363.robot.subsystems.Steering;
 import org.usfirst.frc.team2363.robot.subsystems.ThrottleServo;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
 	public static ThrottleServo throttleServo;
 	public static RunRelay runRelay;
 	public static StarterRelay starterRelay;
+	public static Steering steering;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -38,14 +40,15 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
 		throttleServo = new ThrottleServo();
 		runRelay = new RunRelay();
 		starterRelay = new StarterRelay();
+		steering = new Steering();
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new ThrottleCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
 //        SmartDashboard.putData("Auto mode", chooser);
+        oi = new OI();
     }
 	
 	/**
@@ -116,6 +119,10 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("KILL ENGINE", new RunRelayCommand(false));
         SmartDashboard.putBoolean("Starting?", starterRelay.isStarting());
         SmartDashboard.putData("Auto-Start", new AutoStart());
+        steering.set(oi.getSteering());
+        SmartDashboard.putBoolean("Right Steering Limit", steering.getLimitRight());
+        SmartDashboard.putBoolean("Left Steering Limit", steering.getLimitLeft());
+        SmartDashboard.putNumber("Steering Encoder", steering.getEncoder());
     }
     
     /**

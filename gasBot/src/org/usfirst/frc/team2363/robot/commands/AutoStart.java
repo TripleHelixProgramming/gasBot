@@ -10,24 +10,27 @@ public class AutoStart extends Command {
 
     public AutoStart() {
         requires(starterRelay);
+        setTimeout(3);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	starterRelay.on();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	starterRelay.autoOn();
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	starterRelay.off();
     }
 
     // Called when another command which requires one or more of the same
