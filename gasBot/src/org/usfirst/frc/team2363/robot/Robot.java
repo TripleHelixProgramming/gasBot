@@ -63,6 +63,7 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 //		SmartDashboard.putNumber("Actual Servo Position", newServo.getServo());
+		 SmartDashboard.putNumber("Steering Encoder", steering.getEncoder());
 	}
 
 	/**

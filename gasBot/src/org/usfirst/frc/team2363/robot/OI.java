@@ -26,7 +26,7 @@ public class OI {
 	}
 	
 	public double getSteering() {
-		return ps4.getRawAxis(LEFT_STICK_X);
+		return -ps4.getRawAxis(LEFT_STICK_X);
 	}
 
 	//// CREATING BUTTONS
